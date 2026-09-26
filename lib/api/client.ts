@@ -190,7 +190,7 @@ export const apiClient = {
   /*
    * GET
    */
-  get: <T>(path: string, options?: RequestInit) =>
+   get: <T>(path: string, options?: RequestInit) =>
     request<T>(path, {
       ...options,
       method: "GET",
@@ -199,7 +199,7 @@ export const apiClient = {
   /*
    * POST
    */
-  post: <T>(path: string, body: unknown, options?: RequestInit) =>
+   post: <T>(path: string, body: unknown, options?: RequestInit) =>
     request<T>(path, {
       ...options,
       method: "POST",
@@ -207,9 +207,23 @@ export const apiClient = {
     }),
 
   /*
+   * POST with FormData (file uploads)
+   *
+   * Does NOT JSON-stringify — lets the browser set the
+   * multipart boundary. Still goes through request() so
+   * that 401 → refresh → retry works.
+   */
+   postFormData: <T>(path: string, body: FormData, options?: RequestInit) =>
+    request<T>(path, {
+      ...options,
+      method: "POST",
+      body,
+    }),
+
+  /*
    * PUT
    */
-  put: <T>(path: string, body: unknown, options?: RequestInit) =>
+   put: <T>(path: string, body: unknown, options?: RequestInit) =>
     request<T>(path, {
       ...options,
       method: "PUT",
@@ -219,7 +233,7 @@ export const apiClient = {
   /*
    * DELETE
    */
-  del: <T>(path: string, options?: RequestInit) =>
+   del: <T>(path: string, options?: RequestInit) =>
     request<T>(path, {
       ...options,
       method: "DELETE",

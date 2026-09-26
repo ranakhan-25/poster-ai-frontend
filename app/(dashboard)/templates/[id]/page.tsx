@@ -131,12 +131,12 @@ export default function TemplateDetailPage() {
             </p>
           </div>
 
-          <button
-            onClick={() => {
-              router.push(`/posters/new?template=${template._id}`);
-            }}
-            className="w-full rounded-lg bg-primary py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-          >
+           <button
+             onClick={() => {
+               router.push(`/create?template=${template._id}`)
+             }}
+             className="w-full rounded-lg bg-primary py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+           >
             Use this Template
           </button>
         </div>

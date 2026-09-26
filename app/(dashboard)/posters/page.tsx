@@ -46,7 +46,7 @@ export default function PostersPage() {
     _id: String(p._id),
   }));
 
-  const totalPages = Math.ceil((data?.data.posters.length ?? 0) / PAGE_SIZE);
+  const totalPages = data?.data.pagination?.totalPages ?? 1;
 
   const deletePoster = async (id: string) => {
     setDeleting(id);

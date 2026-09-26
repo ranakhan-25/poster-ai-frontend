@@ -62,36 +62,12 @@ export interface DeletePosterResponse {
   success: boolean;
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL as string;
-
 export const postersApi = {
-  create: async (formData: FormData) => {
-    const response = await fetch(`${API_URL}/posters`, {
-      method: "POST",
-      credentials: "include",
-      body: formData,
-    });
-
-    let body: {
-      success: boolean;
-      data?: CreatePosterResponse;
-      message?: string;
-    };
-
-    try {
-      body = await response.json();
-    } catch {
-      throw new Error("Invalid server response");
-    }
-
-    if (!response.ok || !body.success) {
-      throw new Error(body.message ?? "Failed to create poster");
-    }
-
-    return body as {
-      success: true;
-      data: CreatePosterResponse;
-    };
+  create: (formData: FormData) => {
+    return apiClient.postFormData<CreatePosterResponse>(
+      "/posters",
+      formData,
+    );
   },
 
   listMy: (page = 1, search = "", occasionType = "") => {

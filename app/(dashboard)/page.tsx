@@ -33,13 +33,13 @@ export default function DashboardPage() {
         </p>
       </div>
 
-      <Link
-        href="/posters/new"
-        className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 w-fit"
-      >
-        Create New Poster
-        <ArrowRight className="h-4 w-4" />
-      </Link>
+        <Link
+          href="/create"
+          className="flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 w-fit"
+        >
+          Create New Poster
+          <ArrowRight className="h-4 w-4" />
+        </Link>
 
       {templates.length === 0 ? (
         <EmptyState
